@@ -1,0 +1,66 @@
+
+<div *ngIf="taxonomy">
+    <h2><span jhiTranslate="dhuApp.taxonomy.detail.title">Taxonomy</span> {{taxonomy.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="dhuApp.taxonomy.capabilities">Capabilities</span></dt>
+        <dd>
+            <div *ngIf="taxonomy.capabilities">
+                <a (click)="openFile(taxonomy.capabilitiesContentType, taxonomy.capabilities)" jhiTranslate="entity.action.open">open</a>
+                {{taxonomy.capabilitiesContentType}}, {{byteSize(taxonomy.capabilities)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.description">Description</span></dt>
+        <dd>
+            <span>{{taxonomy.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.hierarchical">Hierarchical</span></dt>
+        <dd>
+            <span>{{taxonomy.hierarchical}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.labels">Labels</span></dt>
+        <dd>
+            <div *ngIf="taxonomy.labels">
+                <a (click)="openFile(taxonomy.labelsContentType, taxonomy.labels)" jhiTranslate="entity.action.open">open</a>
+                {{taxonomy.labelsContentType}}, {{byteSize(taxonomy.labels)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.name">Name</span></dt>
+        <dd>
+            <span>{{taxonomy.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.slug">Slug</span></dt>
+        <dd>
+            <span>{{taxonomy.slug}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.showcloud">Showcloud</span></dt>
+        <dd>
+            <span>{{taxonomy.showcloud}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.types">Types</span></dt>
+        <dd>
+            <div *ngIf="taxonomy.types">
+                <a (click)="openFile(taxonomy.typesContentType, taxonomy.types)" jhiTranslate="entity.action.open">open</a>
+                {{taxonomy.typesContentType}}, {{byteSize(taxonomy.types)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.taxonomy.restbase">Restbase</span></dt>
+        <dd>
+            <span>{{taxonomy.restbase}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'taxonomy/'+ taxonomy.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

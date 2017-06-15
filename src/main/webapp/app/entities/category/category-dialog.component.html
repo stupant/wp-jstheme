@@ -1,0 +1,78 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCategoryLabel" jhiTranslate="dhuApp.category.home.createOrEditLabel">Create or edit a Category</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!category.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="category.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.count" for="field_count">Count</label>
+            <input type="number" class="form-control" name="count" id="field_count"
+                [(ngModel)]="category.count"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="category.description"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="category.link"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="category.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.slug" for="field_slug">Slug</label>
+            <input type="text" class="form-control" name="slug" id="field_slug"
+                [(ngModel)]="category.slug"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.taxonomy" for="field_taxonomy">Taxonomy</label>
+            <input type="text" class="form-control" name="taxonomy" id="field_taxonomy"
+                [(ngModel)]="category.taxonomy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.parent" for="field_parent">Parent</label>
+            <input type="number" class="form-control" name="parent" id="field_parent"
+                [(ngModel)]="category.parent"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.category.meta" for="field_meta">Meta</label>
+            <div>
+                <div *ngIf="category.meta" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(category.metaContentType, category.meta)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{category.metaContentType}}, {{byteSize(category.meta)}}</span>
+                    <button type="button" (click)="category.meta=null;category.metaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, category, 'meta', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="meta" id="field_meta"
+                [(ngModel)]="category.meta"  />
+            <input type="hidden" class="form-control" name="metaContentType" id="field_metaContentType"
+                [(ngModel)]="category.metaContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

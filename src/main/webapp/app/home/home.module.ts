@@ -3,15 +3,15 @@ import { RouterModule } from '@angular/router';
 
 import { DhuSharedModule } from '../shared';
 
-import { HOME_ROUTE, HomeComponent } from './';
+import { HOME_ROUTE, HomeComponent, AboutComponent } from './';
 
 @NgModule({
     imports: [
         DhuSharedModule,
-        RouterModule.forRoot([ HOME_ROUTE ], { useHash: true })
+        RouterModule.forRoot(HOME_ROUTE, { useHash: true })
     ],
     declarations: [
-        HomeComponent,
+        HomeComponent, AboutComponent
     ],
     entryComponents: [
     ],
@@ -19,4 +19,4 @@ import { HOME_ROUTE, HomeComponent } from './';
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class DhuHomeModule {}
+export class DhuHomeModule { }

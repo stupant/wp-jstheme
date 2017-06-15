@@ -1,0 +1,109 @@
+<div>
+    <h2>
+        <span jhiTranslate="dhuApp.page.home.title">Pages</span>
+        <button class="btn btn-primary float-right create-page" [routerLink]="['/', { outlets: { popup: ['page-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="dhuApp.page.home.createLabel">
+            Create new Page
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pages">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="dhuApp.page.date">Date</span></th>
+            <th><span jhiTranslate="dhuApp.page.dategmt">Dategmt</span></th>
+            <th><span jhiTranslate="dhuApp.page.guid">Guid</span></th>
+            <th><span jhiTranslate="dhuApp.page.link">Link</span></th>
+            <th><span jhiTranslate="dhuApp.page.modified">Modified</span></th>
+            <th><span jhiTranslate="dhuApp.page.modifiedgmt">Modifiedgmt</span></th>
+            <th><span jhiTranslate="dhuApp.page.slug">Slug</span></th>
+            <th><span jhiTranslate="dhuApp.page.status">Status</span></th>
+            <th><span jhiTranslate="dhuApp.page.type">Type</span></th>
+            <th><span jhiTranslate="dhuApp.page.parent">Parent</span></th>
+            <th><span jhiTranslate="dhuApp.page.title">Title</span></th>
+            <th><span jhiTranslate="dhuApp.page.content">Content</span></th>
+            <th><span jhiTranslate="dhuApp.page.author">Author</span></th>
+            <th><span jhiTranslate="dhuApp.page.excerpt">Excerpt</span></th>
+            <th><span jhiTranslate="dhuApp.page.featuredmedia">Featuredmedia</span></th>
+            <th><span jhiTranslate="dhuApp.page.commentstatus">Commentstatus</span></th>
+            <th><span jhiTranslate="dhuApp.page.pingstatus">Pingstatus</span></th>
+            <th><span jhiTranslate="dhuApp.page.menuorder">Menuorder</span></th>
+            <th><span jhiTranslate="dhuApp.page.meta">Meta</span></th>
+            <th><span jhiTranslate="dhuApp.page.template">Template</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let page of pages ;trackBy: trackId">
+                <td><a [routerLink]="['../page', page.id ]">{{page.id}}</a></td>
+                <td>{{page.date}}</td>
+                <td>{{page.dategmt}}</td>
+                <td>
+                    <a *ngIf="page.guid" (click)="openFile(page.guidContentType, page.guid)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="page.guid">{{page.guidContentType}}, {{byteSize(page.guid)}}</span>
+                </td>
+                <td>{{page.link}}</td>
+                <td>{{page.modified}}</td>
+                <td>{{page.modifiedgmt}}</td>
+                <td>{{page.slug}}</td>
+                <td>{{page.status}}</td>
+                <td>{{page.type}}</td>
+                <td>{{page.parent}}</td>
+                <td>
+                    <a *ngIf="page.title" (click)="openFile(page.titleContentType, page.title)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="page.title">{{page.titleContentType}}, {{byteSize(page.title)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="page.content" (click)="openFile(page.contentContentType, page.content)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="page.content">{{page.contentContentType}}, {{byteSize(page.content)}}</span>
+                </td>
+                <td>{{page.author}}</td>
+                <td>
+                    <a *ngIf="page.excerpt" (click)="openFile(page.excerptContentType, page.excerpt)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="page.excerpt">{{page.excerptContentType}}, {{byteSize(page.excerpt)}}</span>
+                </td>
+                <td>{{page.featuredmedia}}</td>
+                <td>{{page.commentstatus}}</td>
+                <td>{{page.pingstatus}}</td>
+                <td>{{page.menuorder}}</td>
+                <td>
+                    <a *ngIf="page.meta" (click)="openFile(page.metaContentType, page.meta)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="page.meta">{{page.metaContentType}}, {{byteSize(page.meta)}}</span>
+                </td>
+                <td>{{page.template}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../page', page.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'page/'+ page.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'page/'+ page.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

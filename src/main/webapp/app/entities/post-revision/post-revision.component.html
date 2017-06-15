@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="dhuApp.postRevision.home.title">Post Revisions</span>
+        <button class="btn btn-primary float-right create-post-revision" [routerLink]="['/', { outlets: { popup: ['post-revision-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="dhuApp.postRevision.home.createLabel">
+            Create new Post Revision
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="postRevisions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.author">Author</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.date">Date</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.dategmt">Dategmt</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.guid">Guid</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.modified">Modified</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.modifiedgmt">Modifiedgmt</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.parent">Parent</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.slug">Slug</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.title">Title</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.content">Content</span></th>
+            <th><span jhiTranslate="dhuApp.postRevision.excerpt">Excerpt</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let postRevision of postRevisions ;trackBy: trackId">
+                <td><a [routerLink]="['../post-revision', postRevision.id ]">{{postRevision.id}}</a></td>
+                <td>{{postRevision.author}}</td>
+                <td>{{postRevision.date}}</td>
+                <td>{{postRevision.dategmt}}</td>
+                <td>{{postRevision.guid}}</td>
+                <td>{{postRevision.modified}}</td>
+                <td>{{postRevision.modifiedgmt}}</td>
+                <td>{{postRevision.parent}}</td>
+                <td>{{postRevision.slug}}</td>
+                <td>{{postRevision.title}}</td>
+                <td>{{postRevision.content}}</td>
+                <td>{{postRevision.excerpt}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../post-revision', postRevision.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'post-revision/'+ postRevision.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'post-revision/'+ postRevision.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

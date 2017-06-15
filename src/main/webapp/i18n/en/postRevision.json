@@ -1,0 +1,31 @@
+{
+    "dhuApp": {
+        "postRevision" : {
+            "home": {
+                "title": "Post Revisions",
+                "createLabel": "Create a new Post Revision",
+                "createOrEditLabel": "Create or edit a Post Revision"
+            },
+            "created": "A new Post Revision is created with identifier {{ param }}",
+            "updated": "A Post Revision is updated with identifier {{ param }}",
+            "deleted": "A Post Revision is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Post Revision {{ id }}?"
+            },
+            "detail": {
+                "title": "Post Revision"
+            },
+            "author": "Author",
+            "date": "Date",
+            "dategmt": "Dategmt",
+            "guid": "Guid",
+            "modified": "Modified",
+            "modifiedgmt": "Modifiedgmt",
+            "parent": "Parent",
+            "slug": "Slug",
+            "title": "Title",
+            "content": "Content",
+            "excerpt": "Excerpt"
+        }
+    }
+}

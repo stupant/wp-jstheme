@@ -1,0 +1,52 @@
+
+<div *ngIf="tags">
+    <h2><span jhiTranslate="dhuApp.tags.detail.title">Tags</span> {{tags.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="dhuApp.tags.count">Count</span></dt>
+        <dd>
+            <span>{{tags.count}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.description">Description</span></dt>
+        <dd>
+            <span>{{tags.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.link">Link</span></dt>
+        <dd>
+            <span>{{tags.link}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.name">Name</span></dt>
+        <dd>
+            <span>{{tags.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.slug">Slug</span></dt>
+        <dd>
+            <span>{{tags.slug}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.taxonomy">Taxonomy</span></dt>
+        <dd>
+            <span>{{tags.taxonomy}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.tags.meta">Meta</span></dt>
+        <dd>
+            <div *ngIf="tags.meta">
+                <a (click)="openFile(tags.metaContentType, tags.meta)" jhiTranslate="entity.action.open">open</a>
+                {{tags.metaContentType}}, {{byteSize(tags.meta)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tags/'+ tags.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,108 @@
+<div>
+    <h2>
+        <span jhiTranslate="dhuApp.posts.home.title">Posts</span>
+        <button class="btn btn-primary float-right create-posts" [routerLink]="['/', { outlets: { popup: ['posts-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="dhuApp.posts.home.createLabel">
+            Create new Posts
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="posts">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="dhuApp.posts.date">Date</span></th>
+            <th><span jhiTranslate="dhuApp.posts.dategmt">Dategmt</span></th>
+            <th><span jhiTranslate="dhuApp.posts.guid">Guid</span></th>
+            <th><span jhiTranslate="dhuApp.posts.link">Link</span></th>
+            <th><span jhiTranslate="dhuApp.posts.modified">Modified</span></th>
+            <th><span jhiTranslate="dhuApp.posts.modifiedgmt">Modifiedgmt</span></th>
+            <th><span jhiTranslate="dhuApp.posts.slug">Slug</span></th>
+            <th><span jhiTranslate="dhuApp.posts.status">Status</span></th>
+            <th><span jhiTranslate="dhuApp.posts.type">Type</span></th>
+            <th><span jhiTranslate="dhuApp.posts.password">Password</span></th>
+            <th><span jhiTranslate="dhuApp.posts.title">Title</span></th>
+            <th><span jhiTranslate="dhuApp.posts.content">Content</span></th>
+            <th><span jhiTranslate="dhuApp.posts.author">Author</span></th>
+            <th><span jhiTranslate="dhuApp.posts.excerpt">Excerpt</span></th>
+            <th><span jhiTranslate="dhuApp.posts.featuredmedia">Featuredmedia</span></th>
+            <th><span jhiTranslate="dhuApp.posts.commentstatus">Commentstatus</span></th>
+            <th><span jhiTranslate="dhuApp.posts.pingstatus">Pingstatus</span></th>
+            <th><span jhiTranslate="dhuApp.posts.format">Format</span></th>
+            <th><span jhiTranslate="dhuApp.posts.meta">Meta</span></th>
+            <th><span jhiTranslate="dhuApp.posts.sticky">Sticky</span></th>
+            <th><span jhiTranslate="dhuApp.posts.template">Template</span></th>
+            <th><span jhiTranslate="dhuApp.posts.categories">Categories</span></th>
+            <th><span jhiTranslate="dhuApp.posts.tags">Tags</span></th>
+            <th><span jhiTranslate="dhuApp.posts.livebloglikes">Livebloglikes</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let posts of posts ;trackBy: trackId">
+                <td><a [routerLink]="['../posts', posts.id ]">{{posts.id}}</a></td>
+                <td>{{posts.date}}</td>
+                <td>{{posts.dategmt}}</td>
+                <td>{{posts.guid}}</td>
+                <td>{{posts.link}}</td>
+                <td>{{posts.modified}}</td>
+                <td>{{posts.modifiedgmt}}</td>
+                <td>{{posts.slug}}</td>
+                <td>{{posts.status}}</td>
+                <td>{{posts.type}}</td>
+                <td>{{posts.password}}</td>
+                <td>{{posts.title}}</td>
+                <td>{{posts.content}}</td>
+                <td>{{posts.author}}</td>
+                <td>{{posts.excerpt}}</td>
+                <td>{{posts.featuredmedia}}</td>
+                <td>{{posts.commentstatus}}</td>
+                <td>{{posts.pingstatus}}</td>
+                <td>{{posts.format}}</td>
+                <td>{{posts.meta}}</td>
+                <td>{{posts.sticky}}</td>
+                <td>{{posts.template}}</td>
+                <td>
+                    <a *ngIf="posts.categories" (click)="openFile(posts.categoriesContentType, posts.categories)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="posts.categories">{{posts.categoriesContentType}}, {{byteSize(posts.categories)}}</span>
+                </td>
+                <td>
+                    <a *ngIf="posts.tags" (click)="openFile(posts.tagsContentType, posts.tags)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="posts.tags">{{posts.tagsContentType}}, {{byteSize(posts.tags)}}</span>
+                </td>
+                <td>{{posts.livebloglikes}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../posts', posts.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'posts/'+ posts.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'posts/'+ posts.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

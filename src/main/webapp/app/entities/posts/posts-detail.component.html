@@ -1,0 +1,6 @@
+<div class="card post-card" *ngIf="posts">
+    <h1 class="card-header bg-crimson"  innerHtml="{{ posts.title?.rendered }}"></h1>
+    <div class="card-block bg-crimson" innerHtml="{{ posts.content?.rendered }}"></div>
+    <a class="card-header btn-primary bg-night" href="{{ posts.acf?.pdf?.url }}">Download PDF</a>
+    <a class="card-header btn-info bg-blue" href="#">Enroll now</a>
+</div>

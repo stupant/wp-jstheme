@@ -1,0 +1,65 @@
+
+<div *ngIf="postRevision">
+    <h2><span jhiTranslate="dhuApp.postRevision.detail.title">Post Revision</span> {{postRevision.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="dhuApp.postRevision.author">Author</span></dt>
+        <dd>
+            <span>{{postRevision.author}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.date">Date</span></dt>
+        <dd>
+            <span>{{postRevision.date}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.dategmt">Dategmt</span></dt>
+        <dd>
+            <span>{{postRevision.dategmt}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.guid">Guid</span></dt>
+        <dd>
+            <span>{{postRevision.guid}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.modified">Modified</span></dt>
+        <dd>
+            <span>{{postRevision.modified}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.modifiedgmt">Modifiedgmt</span></dt>
+        <dd>
+            <span>{{postRevision.modifiedgmt}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.parent">Parent</span></dt>
+        <dd>
+            <span>{{postRevision.parent}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.slug">Slug</span></dt>
+        <dd>
+            <span>{{postRevision.slug}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.title">Title</span></dt>
+        <dd>
+            <span>{{postRevision.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.content">Content</span></dt>
+        <dd>
+            <span>{{postRevision.content}}</span>
+        </dd>
+        <dt><span jhiTranslate="dhuApp.postRevision.excerpt">Excerpt</span></dt>
+        <dd>
+            <span>{{postRevision.excerpt}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'post-revision/'+ postRevision.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

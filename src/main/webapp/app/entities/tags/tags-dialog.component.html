@@ -1,0 +1,73 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myTagsLabel" jhiTranslate="dhuApp.tags.home.createOrEditLabel">Create or edit a Tags</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!tags.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="tags.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.count" for="field_count">Count</label>
+            <input type="number" class="form-control" name="count" id="field_count"
+                [(ngModel)]="tags.count"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="tags.description"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="tags.link"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="tags.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.slug" for="field_slug">Slug</label>
+            <input type="text" class="form-control" name="slug" id="field_slug"
+                [(ngModel)]="tags.slug"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.taxonomy" for="field_taxonomy">Taxonomy</label>
+            <input type="text" class="form-control" name="taxonomy" id="field_taxonomy"
+                [(ngModel)]="tags.taxonomy"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.tags.meta" for="field_meta">Meta</label>
+            <div>
+                <div *ngIf="tags.meta" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(tags.metaContentType, tags.meta)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{tags.metaContentType}}, {{byteSize(tags.meta)}}</span>
+                    <button type="button" (click)="tags.meta=null;tags.metaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, tags, 'meta', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="meta" id="field_meta"
+                [(ngModel)]="tags.meta"  />
+            <input type="hidden" class="form-control" name="metaContentType" id="field_metaContentType"
+                [(ngModel)]="tags.metaContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

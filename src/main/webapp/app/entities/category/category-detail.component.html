@@ -1,0 +1,8 @@
+<div class="card category-card" *ngIf="category">
+    <h1 class="card-header bg-crimson"  innerHtml="{{ category.name }}"></h1>
+    <ul class="list-group list-group-flush" *ngIf="posts">
+      <li class="list-group-item {{ i % 2 ? 'bg-night':'bg-blue'}}" *ngFor="let p of posts; let i=index">
+          <h3><a routerLink="/posts/{{p.id}}" class="text-white">{{ p.title.rendered }}</a></h3>
+      </li>
+    </ul>
+</div>

@@ -1,0 +1,81 @@
+<div>
+    <h2>
+        <span jhiTranslate="dhuApp.taxonomy.home.title">Taxonomies</span>
+        <button class="btn btn-primary float-right create-taxonomy" [routerLink]="['/', { outlets: { popup: ['taxonomy-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="dhuApp.taxonomy.home.createLabel">
+            Create new Taxonomy
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="taxonomies">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.capabilities">Capabilities</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.description">Description</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.hierarchical">Hierarchical</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.labels">Labels</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.name">Name</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.slug">Slug</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.showcloud">Showcloud</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.types">Types</span></th>
+            <th><span jhiTranslate="dhuApp.taxonomy.restbase">Restbase</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let taxonomy of taxonomies ;trackBy: trackId">
+                <td><a [routerLink]="['../taxonomy', taxonomy.id ]">{{taxonomy.id}}</a></td>
+                <td>
+                    <a *ngIf="taxonomy.capabilities" (click)="openFile(taxonomy.capabilitiesContentType, taxonomy.capabilities)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="taxonomy.capabilities">{{taxonomy.capabilitiesContentType}}, {{byteSize(taxonomy.capabilities)}}</span>
+                </td>
+                <td>{{taxonomy.description}}</td>
+                <td>{{taxonomy.hierarchical}}</td>
+                <td>
+                    <a *ngIf="taxonomy.labels" (click)="openFile(taxonomy.labelsContentType, taxonomy.labels)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="taxonomy.labels">{{taxonomy.labelsContentType}}, {{byteSize(taxonomy.labels)}}</span>
+                </td>
+                <td>{{taxonomy.name}}</td>
+                <td>{{taxonomy.slug}}</td>
+                <td>{{taxonomy.showcloud}}</td>
+                <td>
+                    <a *ngIf="taxonomy.types" (click)="openFile(taxonomy.typesContentType, taxonomy.types)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="taxonomy.types">{{taxonomy.typesContentType}}, {{byteSize(taxonomy.types)}}</span>
+                </td>
+                <td>{{taxonomy.restbase}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../taxonomy', taxonomy.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'taxonomy/'+ taxonomy.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'taxonomy/'+ taxonomy.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

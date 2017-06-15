@@ -1,0 +1,190 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPageLabel" jhiTranslate="dhuApp.page.home.createOrEditLabel">Create or edit a Page</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!page.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="page.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.date" for="field_date">Date</label>
+            <input type="text" class="form-control" name="date" id="field_date"
+                [(ngModel)]="page.date"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.dategmt" for="field_dategmt">Dategmt</label>
+            <input type="text" class="form-control" name="dategmt" id="field_dategmt"
+                [(ngModel)]="page.dategmt"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.guid" for="field_guid">Guid</label>
+            <div>
+                <div *ngIf="page.guid" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(page.guidContentType, page.guid)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{page.guidContentType}}, {{byteSize(page.guid)}}</span>
+                    <button type="button" (click)="page.guid=null;page.guidContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, page, 'guid', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="guid" id="field_guid"
+                [(ngModel)]="page.guid"  />
+            <input type="hidden" class="form-control" name="guidContentType" id="field_guidContentType"
+                [(ngModel)]="page.guidContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="page.link"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.modified" for="field_modified">Modified</label>
+            <input type="text" class="form-control" name="modified" id="field_modified"
+                [(ngModel)]="page.modified"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.modifiedgmt" for="field_modifiedgmt">Modifiedgmt</label>
+            <input type="text" class="form-control" name="modifiedgmt" id="field_modifiedgmt"
+                [(ngModel)]="page.modifiedgmt"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.slug" for="field_slug">Slug</label>
+            <input type="text" class="form-control" name="slug" id="field_slug"
+                [(ngModel)]="page.slug"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="page.status"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="page.type"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.parent" for="field_parent">Parent</label>
+            <input type="number" class="form-control" name="parent" id="field_parent"
+                [(ngModel)]="page.parent"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.title" for="field_title">Title</label>
+            <div>
+                <div *ngIf="page.title" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(page.titleContentType, page.title)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{page.titleContentType}}, {{byteSize(page.title)}}</span>
+                    <button type="button" (click)="page.title=null;page.titleContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, page, 'title', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="title" id="field_title"
+                [(ngModel)]="page.title"  />
+            <input type="hidden" class="form-control" name="titleContentType" id="field_titleContentType"
+                [(ngModel)]="page.titleContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.content" for="field_content">Content</label>
+            <div>
+                <div *ngIf="page.content" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(page.contentContentType, page.content)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{page.contentContentType}}, {{byteSize(page.content)}}</span>
+                    <button type="button" (click)="page.content=null;page.contentContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, page, 'content', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="content" id="field_content"
+                [(ngModel)]="page.content"  />
+            <input type="hidden" class="form-control" name="contentContentType" id="field_contentContentType"
+                [(ngModel)]="page.contentContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.author" for="field_author">Author</label>
+            <input type="number" class="form-control" name="author" id="field_author"
+                [(ngModel)]="page.author"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.excerpt" for="field_excerpt">Excerpt</label>
+            <div>
+                <div *ngIf="page.excerpt" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(page.excerptContentType, page.excerpt)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{page.excerptContentType}}, {{byteSize(page.excerpt)}}</span>
+                    <button type="button" (click)="page.excerpt=null;page.excerptContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, page, 'excerpt', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="excerpt" id="field_excerpt"
+                [(ngModel)]="page.excerpt"  />
+            <input type="hidden" class="form-control" name="excerptContentType" id="field_excerptContentType"
+                [(ngModel)]="page.excerptContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.featuredmedia" for="field_featuredmedia">Featuredmedia</label>
+            <input type="number" class="form-control" name="featuredmedia" id="field_featuredmedia"
+                [(ngModel)]="page.featuredmedia"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.commentstatus" for="field_commentstatus">Commentstatus</label>
+            <input type="text" class="form-control" name="commentstatus" id="field_commentstatus"
+                [(ngModel)]="page.commentstatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.pingstatus" for="field_pingstatus">Pingstatus</label>
+            <input type="text" class="form-control" name="pingstatus" id="field_pingstatus"
+                [(ngModel)]="page.pingstatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.menuorder" for="field_menuorder">Menuorder</label>
+            <input type="number" class="form-control" name="menuorder" id="field_menuorder"
+                [(ngModel)]="page.menuorder"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.meta" for="field_meta">Meta</label>
+            <div>
+                <div *ngIf="page.meta" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(page.metaContentType, page.meta)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{page.metaContentType}}, {{byteSize(page.meta)}}</span>
+                    <button type="button" (click)="page.meta=null;page.metaContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, page, 'meta', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="meta" id="field_meta"
+                [(ngModel)]="page.meta"  />
+            <input type="hidden" class="form-control" name="metaContentType" id="field_metaContentType"
+                [(ngModel)]="page.metaContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.page.template" for="field_template">Template</label>
+            <input type="text" class="form-control" name="template" id="field_template"
+                [(ngModel)]="page.template"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

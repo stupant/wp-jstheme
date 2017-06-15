@@ -1,0 +1,44 @@
+{
+    "dhuApp": {
+        "posts" : {
+            "home": {
+                "title": "Posts",
+                "createLabel": "Create a new Posts",
+                "createOrEditLabel": "Create or edit a Posts"
+            },
+            "created": "A new Posts is created with identifier {{ param }}",
+            "updated": "A Posts is updated with identifier {{ param }}",
+            "deleted": "A Posts is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Posts {{ id }}?"
+            },
+            "detail": {
+                "title": "Posts"
+            },
+            "date": "Date",
+            "dategmt": "Dategmt",
+            "guid": "Guid",
+            "link": "Link",
+            "modified": "Modified",
+            "modifiedgmt": "Modifiedgmt",
+            "slug": "Slug",
+            "status": "Status",
+            "type": "Type",
+            "password": "Password",
+            "title": "Title",
+            "content": "Content",
+            "author": "Author",
+            "excerpt": "Excerpt",
+            "featuredmedia": "Featuredmedia",
+            "commentstatus": "Commentstatus",
+            "pingstatus": "Pingstatus",
+            "format": "Format",
+            "meta": "Meta",
+            "sticky": "Sticky",
+            "template": "Template",
+            "categories": "Categories",
+            "tags": "Tags",
+            "livebloglikes": "Livebloglikes"
+        }
+    }
+}

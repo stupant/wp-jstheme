@@ -1,0 +1,171 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPostsLabel" jhiTranslate="dhuApp.posts.home.createOrEditLabel">Create or edit a Posts</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!posts.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="posts.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.date" for="field_date">Date</label>
+            <input type="text" class="form-control" name="date" id="field_date"
+                [(ngModel)]="posts.date"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.dategmt" for="field_dategmt">Dategmt</label>
+            <input type="text" class="form-control" name="dategmt" id="field_dategmt"
+                [(ngModel)]="posts.dategmt"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.guid" for="field_guid">Guid</label>
+            <textarea class="form-control" name="guid" id="field_guid"
+                [(ngModel)]="posts.guid"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.link" for="field_link">Link</label>
+            <input type="text" class="form-control" name="link" id="field_link"
+                [(ngModel)]="posts.link"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.modified" for="field_modified">Modified</label>
+            <input type="text" class="form-control" name="modified" id="field_modified"
+                [(ngModel)]="posts.modified"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.modifiedgmt" for="field_modifiedgmt">Modifiedgmt</label>
+            <input type="text" class="form-control" name="modifiedgmt" id="field_modifiedgmt"
+                [(ngModel)]="posts.modifiedgmt"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.slug" for="field_slug">Slug</label>
+            <input type="text" class="form-control" name="slug" id="field_slug"
+                [(ngModel)]="posts.slug"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                [(ngModel)]="posts.status"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="posts.type"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="posts.password"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.title" for="field_title">Title</label>
+            <textarea class="form-control" name="title" id="field_title"
+                [(ngModel)]="posts.title"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.content" for="field_content">Content</label>
+            <textarea class="form-control" name="content" id="field_content"
+                [(ngModel)]="posts.content"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.author" for="field_author">Author</label>
+            <input type="number" class="form-control" name="author" id="field_author"
+                [(ngModel)]="posts.author"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.excerpt" for="field_excerpt">Excerpt</label>
+            <textarea class="form-control" name="excerpt" id="field_excerpt"
+                [(ngModel)]="posts.excerpt"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.featuredmedia" for="field_featuredmedia">Featuredmedia</label>
+            <input type="number" class="form-control" name="featuredmedia" id="field_featuredmedia"
+                [(ngModel)]="posts.featuredmedia"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.commentstatus" for="field_commentstatus">Commentstatus</label>
+            <input type="text" class="form-control" name="commentstatus" id="field_commentstatus"
+                [(ngModel)]="posts.commentstatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.pingstatus" for="field_pingstatus">Pingstatus</label>
+            <input type="text" class="form-control" name="pingstatus" id="field_pingstatus"
+                [(ngModel)]="posts.pingstatus"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.format" for="field_format">Format</label>
+            <input type="text" class="form-control" name="format" id="field_format"
+                [(ngModel)]="posts.format"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.meta" for="field_meta">Meta</label>
+            <textarea class="form-control" name="meta" id="field_meta"
+                [(ngModel)]="posts.meta"  ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.sticky" for="field_sticky">Sticky</label>
+            <input type="checkbox" class="form-control" name="sticky" id="field_sticky"
+                [(ngModel)]="posts.sticky"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.template" for="field_template">Template</label>
+            <input type="text" class="form-control" name="template" id="field_template"
+                [(ngModel)]="posts.template"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.categories" for="field_categories">Categories</label>
+            <div>
+                <div *ngIf="posts.categories" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(posts.categoriesContentType, posts.categories)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{posts.categoriesContentType}}, {{byteSize(posts.categories)}}</span>
+                    <button type="button" (click)="posts.categories=null;posts.categoriesContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, posts, 'categories', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="categories" id="field_categories"
+                [(ngModel)]="posts.categories"  />
+            <input type="hidden" class="form-control" name="categoriesContentType" id="field_categoriesContentType"
+                [(ngModel)]="posts.categoriesContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.tags" for="field_tags">Tags</label>
+            <div>
+                <div *ngIf="posts.tags" class="form-text text-danger clearfix">
+                    <a class="pull-left" (click)="openFile(posts.tagsContentType, posts.tags)" jhiTranslate="entity.action.open">open</a><br>
+                    <span class="pull-left">{{posts.tagsContentType}}, {{byteSize(posts.tags)}}</span>
+                    <button type="button" (click)="posts.tags=null;posts.tagsContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, posts, 'tags', false)" jhiTranslate="entity.action.addblob"/>
+            </div>
+            <input type="hidden" class="form-control" name="tags" id="field_tags"
+                [(ngModel)]="posts.tags"  />
+            <input type="hidden" class="form-control" name="tagsContentType" id="field_tagsContentType"
+                [(ngModel)]="posts.tagsContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="dhuApp.posts.livebloglikes" for="field_livebloglikes">Livebloglikes</label>
+            <input type="number" class="form-control" name="livebloglikes" id="field_livebloglikes"
+                [(ngModel)]="posts.livebloglikes"  />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

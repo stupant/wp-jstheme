@@ -19,10 +19,12 @@ export class NavbarComponent implements OnInit {
 
     inProduction: boolean;
     isNavbarCollapsed: boolean;
+    isSearchCollapsed: boolean;
     languages: any[];
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    query: string;
 
     constructor(
         private loginService: LoginService,
@@ -35,6 +37,7 @@ export class NavbarComponent implements OnInit {
     ) {
         this.version = VERSION ? 'v' + VERSION : '';
         this.isNavbarCollapsed = true;
+        this.isSearchCollapsed = true;
     }
 
     ngOnInit() {
@@ -49,7 +52,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeLanguage(languageKey: string) {
-      this.languageService.changeLanguage(languageKey);
+        this.languageService.changeLanguage(languageKey);
     }
 
     collapseNavbar() {
@@ -73,8 +76,16 @@ export class NavbarComponent implements OnInit {
     toggleNavbar() {
         this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
+    toggleSearch() {
+        this.isSearchCollapsed = !this.isSearchCollapsed;
+        console.log('isSearchCollapsed', this.isSearchCollapsed);
+    }
 
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
+    }
+
+    doSearch() {
+        console.log('TODO: Add search form here');
     }
 }

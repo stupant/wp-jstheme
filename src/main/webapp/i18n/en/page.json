@@ -1,0 +1,40 @@
+{
+    "dhuApp": {
+        "page" : {
+            "home": {
+                "title": "Pages",
+                "createLabel": "Create a new Page",
+                "createOrEditLabel": "Create or edit a Page"
+            },
+            "created": "A new Page is created with identifier {{ param }}",
+            "updated": "A Page is updated with identifier {{ param }}",
+            "deleted": "A Page is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Page"
+            },
+            "date": "Date",
+            "dategmt": "Dategmt",
+            "guid": "Guid",
+            "link": "Link",
+            "modified": "Modified",
+            "modifiedgmt": "Modifiedgmt",
+            "slug": "Slug",
+            "status": "Status",
+            "type": "Type",
+            "parent": "Parent",
+            "title": "Title",
+            "content": "Content",
+            "author": "Author",
+            "excerpt": "Excerpt",
+            "featuredmedia": "Featuredmedia",
+            "commentstatus": "Commentstatus",
+            "pingstatus": "Pingstatus",
+            "menuorder": "Menuorder",
+            "meta": "Meta",
+            "template": "Template"
+        }
+    }
+}
